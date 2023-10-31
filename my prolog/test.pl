@@ -1,0 +1,34 @@
+male(fred).
+male(jhon).
+male(peter).
+male(bob).
+female(carol).
+female(ann).
+female(alex).
+female(aklin).
+female(alice).
+father(fred,jhon).
+father(jhon,peter).
+father(jhon,bob).
+father(jhon,alex).
+father(peter,alice).
+mother(ann,peter).
+mother(ann,bob).
+mother(ann,alex).
+mother(aklin,alice).
+wife(carol,fred).
+wife(aklin,peter).
+wife(ann,jhon).
+husband(fred,carol).
+husband(jhon,ann).
+husband(peter,aklin).
+grand_son(X,Y) :- father(Y,A),father(A,X),male(X).
+grand_daughter(X,Y) :- father(Y,A),father(A,X),female(X).
+sister(X,Y) :-father(A,X),father(A,Y),female(X).
+brother(X,Y) :- father(A,X),father(A,Y),male(X).
+great_grand_daughter(X,Y) :- father(Y,A),father(A,B),father(B,X),female(X).
+great_grand_son(X,Y):- father(Y,A),father(A,B),father(B,X),male(X).
+grand_father(X,Y) :- father(X,A),father(A,Y),male(X).
+
+% great_grand_father(X,Y) : -
+% father(X,A),father(A,B),father(B,Y),male(X).
